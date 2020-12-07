@@ -2,7 +2,7 @@
 
 ## Приложение по поиску авиабилетов
 
-![]()
+![](https://raw.githubusercontent.com/theart84/avia_tickets/main/aviatickets.jpg)
 
 ### Задачи
 
