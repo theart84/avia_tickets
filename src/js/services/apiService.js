@@ -8,7 +8,7 @@ endpoints
 * /prices/cheap - array
 */
 
-class API {
+export class API {
   constructor(config) {
     this.url = config.url;
   }

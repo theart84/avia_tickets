@@ -2,12 +2,12 @@ import api from '../services/apiService';
 import { formatDate } from "../helpers/date";
 import favorites from "./favorites";
 
-class Locations {
+export class Locations {
   constructor(api, helpers) {
     this.api = api;
     this.countries = null;
     this.cities = null;
-    this.shortCitiesList = null;
+    this.shortCitiesList = {};
     this.airlines = {};
     this.lastSearch = {};
     this.formatDate = helpers.formatDate;
