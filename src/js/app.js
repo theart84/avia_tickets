@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const ticketId = parent.dataset.ticketId;
         if (ticket.textContent === 'favorite_border') {
           ticket.textContent = 'favorite';
-          favorites.setFavotiteTicketToLocalStorage(ticketId);
+          favorites.setFavoriteTicketToLocalStorage(ticketId);
         } else {
           ticket.textContent = 'favorite_border';
           favorites.removeTicketToLocalStorage(ticketId);

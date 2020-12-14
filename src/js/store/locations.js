@@ -52,6 +52,9 @@ export class Locations {
 
   serializeCountries(countries) {
     // { 'Country code': { ... } }
+    if (!Array.isArray(countries) || !countries.length) {
+      return {};
+    }
     return countries.reduce((acc, country) => {
       acc[country.code] = country
       return acc;
@@ -75,9 +78,10 @@ export class Locations {
 
   serializeAirlines(airlines) {
     return airlines.reduce((acc, airline) => {
-      airline.logo = `http://pics.avs.io/200/200/${airline.code}.png`;
-      airline.name = airline.name || airline.name_translations.en;
-      acc[airline.code] = airline;
+      const airlineCopy = {...airline};
+      airlineCopy.logo = `http://pics.avs.io/200/200/${airlineCopy.code}.png`;
+      airlineCopy.name = airlineCopy.name || airlineCopy.name_translations.en;
+      acc[airlineCopy.code] = airlineCopy;
       return acc;
     }, {});
   }
@@ -112,7 +116,7 @@ export class Locations {
   }
   checkFavoriteStatus(ticket) {
     const id = this.getTicketID(ticket);
-    const favoritesArray = favorites.getFavotitesTicketToLocalStorage();
+    const favoritesArray = favorites.getFavoritesTicketToLocalStorage();
     return favoritesArray.some((ticket) => ticket.id === id);
   }
 

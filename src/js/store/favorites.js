@@ -1,7 +1,7 @@
 import locations from "./locations";
 import favTicketsUI from "../views/favTickets";
 
-class Favorites {
+export class Favorites {
   constructor(locations) {
     this.locations = locations;
     Favorites.initLocalStorage();
@@ -16,7 +16,7 @@ class Favorites {
     favTicketsUI.renderTickets(data);
   }
 
-  setFavotiteTicketToLocalStorage(ticketId) {
+  setFavoriteTicketToLocalStorage(ticketId) {
     const data = JSON.parse(localStorage.getItem('data'));
     const findItem = data.find(ticket => ticket.id === ticketId);
     if (findItem) return;
@@ -25,14 +25,14 @@ class Favorites {
     favTicketsUI.renderTickets(data);
   }
   removeTicketToLocalStorage(ticketId) {
-    const data = this.getFavotitesTicketToLocalStorage();
+    const data = this.getFavoritesTicketToLocalStorage();
     localStorage.clear();
     const newData = data.filter(ticket => ticket.id !== ticketId);
     localStorage.setItem('data', JSON.stringify(newData));
     favTicketsUI.renderTickets(newData);
   }
 
-  getFavotitesTicketToLocalStorage() {
+  getFavoritesTicketToLocalStorage() {
     let data = JSON.parse(localStorage.getItem('data'));
     if (!data) {
       data = []
